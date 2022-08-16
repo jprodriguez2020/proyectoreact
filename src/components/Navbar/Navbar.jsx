@@ -4,35 +4,37 @@ import { Menu, Transition } from "@headlessui/react";
 import "./Navbar.css";
 import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
-
+import { useCart } from "../Cart/Cart";
 
 const Navbar = () => {
   const navigation = [
     {
-      href: "/",
+      src: "/",
       text: "Home",
     },
     {
-      href: "/products",
+      src: "/products",
       text: "Products",
     },
     {
-      href: "/contact",
+      src: "/contact",
       text: "Contact",
     },
   ];
 
   const navigationMenu = [
     {
-      href: "/shopping-cart",
+      src: "/shopping-cart",
       text: "Shopping Cart",
     },
     {
-      href: "/contact",
+      src: "/contact",
       text: "Contact",
     },
 
-  ]
+  ];
+  const items = useCart();
+  console.log(items);
 
   return (
     <Fragment>
@@ -45,12 +47,12 @@ const Navbar = () => {
           </Link>
 
           {/* NAVIGATION */}
-          <div className="flex items-end lowercase">
-            {navigation.map(({ href, text }) => (
+          <div className="flex items-end lowercase items-center">
+            {navigation.map(({ src, text }) => (
               <NavLink
                 className="flex justify-center navbar__link mr-4 text-md text-center"
                 key={text}
-                to={href}
+                to={src}
               >
                 {text}
               </NavLink>
@@ -77,11 +79,14 @@ const Navbar = () => {
                 leaveTo="transform opacity-0 scale-95"
               >
                 <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-themeYellow ring-opacity-5 focus:outline-none">
+                  <div className="navbar__cart bg-themeYellow text-themeMainBrown block px-4 py-2 text-md">
+                    {items.length}
+                  </div>
                   <div>
-                    {navigationMenu.map(({ href, text }) => (
-                      <Menu.Item>
-                        <NavLink to={href} key={text} className="bg-themeYellow text-themeMainBrown block px-4 py-2 text-md navbar__menuItem">
-                        {text}
+                    {navigationMenu.map(({ src, text }) => (
+                      <Menu.Item key={text} >
+                        <NavLink to={src} className="bg-themeYellow text-themeMainBrown block px-4 py-2 text-md navbar__menuItem">
+                        {text === "Shopping Cart" ? `Shopping Cart ${items.cartItems.length}` : text}
                         </NavLink>
                       </Menu.Item>
                     ))}
