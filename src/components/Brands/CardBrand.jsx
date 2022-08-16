@@ -1,17 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './CardBrands.css'
 
 
 function cardbrand({imageLogo, title}) {
   return (
-    <div className="card text-center bg-dark">
-      <div className="imagenOverflow">
-        <img src={imageLogo} alt="" className="container mx-auto flex justify-between p-12"/> 
+    <div className="flex flex-col card text-center p-1">
+      <div>
+        <img src={imageLogo} alt="" className="container mx-auto p-5"/> 
       </div>
         
-        <div className="card-body text-light">
-            <h4 className="card-title">{title}</h4>
+        <div>
+            <h4>{title}</h4>
         </div>
     </div>
   )

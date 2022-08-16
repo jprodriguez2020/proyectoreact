@@ -55,11 +55,12 @@ const brands = [
 
 function Brands() {
   return (
-    <div className="flex items-center">
-        <div className="rounded overflow-hidden shadow-lg ">
+    <div>
+        <h2 className ='mt-3 text-4xl font-dynapuff text-center'>BRANDS WE CARRY</h2>
+        <div className= "flex flex-row">
             {
                 brands.map(({title, image, id}) => (
-                    <div className ="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4 font-dynapuff" key={id}>
+                    <div className ="font-dynapuff w-60 h-60" key={id}>
                         <CardBrand imageLogo={image} title={title}/>
                     </div>
                 ))

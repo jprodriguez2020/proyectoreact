@@ -4,17 +4,17 @@ import logo from "../../assets/img/logo.svg";
 
     const Footer = () => {
       return (
-        <footer className="container-fluid">
-			<div className="bg-[#FFD880] container mx-auto px-4 flex justify-center p-3 font-dynapuff text-themeMainBrown fixed">
+        <footer className="w-screen container-fluid bg-themeYellow">
+			<div className="container flex justify-center p-3 px-4 mx-auto font-dynapuff text-themeMainBrown">
 			    {/* BRAND */}
-				<Link to="/" className="navbar__brand flex text-2xl">
+				<Link to="/" className="flex text-2xl navbar__brand">
 					<img src={logo} alt="logo" className="w-8 h-8 mr-2" />
 					Pet Store
 				</Link>
                 {/* LINKS */}
 			    <div className="container pt-9">
 				    <div className="flex justify-center mb-9">
-					    <a href="#!" className="mr-9 text-gray-800">
+					    <a href="#!" className="text-gray-800 mr-9">
 						    <svg
                             aria-hidden="true"
                             focusable="false"
@@ -30,13 +30,13 @@ import logo from "../../assets/img/logo.svg";
                                 ></path>
                             </svg>
                         </a>
-                        <a href="#!" className="mr-9 text-gray-800">
+                        <a href="#!" className="text-gray-800 mr-9">
                             <svg
                             aria-hidden="true"
                             focusable="false"
                             data-prefix="fab"
                             data-icon="twitter"
-                            className="svg-inline--fa fa-twitter w-4"
+                            className="w-4 svg-inline--fa fa-twitter"
                             role="img"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512">
@@ -46,7 +46,7 @@ import logo from "../../assets/img/logo.svg";
                                 ></path>
                             </svg>
                         </a>
-                        <a href="#!" className="mr-9 text-gray-800">
+                        <a href="#!" className="text-gray-800 mr-9">
                             <svg
                             aria-hidden="true"
                             focusable="false"
@@ -62,7 +62,7 @@ import logo from "../../assets/img/logo.svg";
                             ></path>
                             </svg>
                         </a>
-                        <a href="#!" className="mr-9 text-gray-800">
+                        <a href="#!" className="text-gray-800 mr-9">
                             <svg
                             aria-hidden="true"
                             focusable="false"
@@ -79,7 +79,7 @@ import logo from "../../assets/img/logo.svg";
                             </svg>
                         </a>
                         {/* BUTTON */}
-                        <div className="ml-60 text-gray-700 font-dynapuff text-themeMainBrown">
+                        <div className="text-gray-700 ml-60 font-dynapuff text-themeMainBrown">
                             0800-999-PET (858)
                             <button className="ml-4 font-dynapuff text-themeMainBrown fixed bg-[#d97706] py-1 px-2 border rounded hover:bg-transparent">
                                 Order a call !
@@ -92,5 +92,6 @@ import logo from "../../assets/img/logo.svg";
       );
     }
     
-    export default Footer
+    export default Footer;
+    
   
