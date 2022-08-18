@@ -4,13 +4,13 @@ import logo from "../../assets/img/logo.svg";
 
     const Footer = () => {
       return (
-        <footer className="w-screen container-fluid bg-themeYellow">
-			<div className="container flex justify-center p-3 px-4 mx-auto font-dynapuff text-themeMainBrown">
+        <footer className="w-screen mt-10 container-fluid bg-themeYellow">
+			<div className="container flex justify-center p-5 px-4 mx-auto font-dynapuff text-themeMainBrown">
 			    {/* BRAND */}
 				<Link to="/" className="flex text-2xl navbar__brand">
-					<img src={logo} alt="logo" className="w-8 h-8 mr-2" />
-					Pet Store
-				</Link>
+                    <img src={logo} alt="logo" className="w-8 h-8 mr-2" />
+                    Pet Store
+                </Link>
                 {/* LINKS */}
 			    <div className="container pt-9">
 				    <div className="flex justify-center mb-9">
@@ -81,7 +81,7 @@ import logo from "../../assets/img/logo.svg";
                         {/* BUTTON */}
                         <div className="text-gray-700 ml-60 font-dynapuff text-themeMainBrown">
                             0800-999-PET (858)
-                            <button className="ml-4 font-dynapuff text-themeMainBrown fixed bg-[#d97706] py-1 px-2 border rounded hover:bg-transparent">
+                            <button className="ml-4 font-dynapuff text-themeMainBrown bg-[#d97706] py-1 px-2 border rounded hover:bg-transparent">
                                 Order a call !
                             </button>     
                         </div>
