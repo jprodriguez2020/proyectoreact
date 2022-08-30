@@ -19,6 +19,8 @@ const Contact = () => {
       return;
     }
     setError(false);
+    alert('Message Sent');
+    setForm({ client: '', email: '', phone: '' });
   };
 
   return (
@@ -33,7 +35,7 @@ const Contact = () => {
               selection of feed?
             </span>
 
-            <p className="p-5">
+            <p className="text-sm p-5 md:w-96">
               Fill in the form and we will help you choose the product over the
               phone
             </p>

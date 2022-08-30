@@ -35,7 +35,7 @@ const Navbar = () => {
   return (
     <>
       <div className="container-fluid bg-transparent flex justify-center ">
-        <div className="container mx-auto flex justify-between  p-3 font-dynapuff text-themeMainBrown">
+        <div className="container mx-auto flex justify-between  p-3 font-dynapuff fixed text-themeMainBrown">
           {/* BRAND */}
           <Link to="/" className="navbar__brand flex text-2xl">
             <img src={logo} alt="logo" className="w-8 h-8 mr-2" />
