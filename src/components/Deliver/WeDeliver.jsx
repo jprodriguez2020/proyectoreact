@@ -20,9 +20,9 @@ const Deliver = [
 
 const WeDeliver = () => {
   return (
-    <div className='weDeivery flex-col w-full  md:mt-5 bg-themeCian'>
+    <div className='weDeivery flex-col w-full bg-themeCian'>
         <div className='logo flex justify-end '>
-            <img src={logo} alt="logo" className="w-8 h-8 mr-2 p-1 rounded-full bg-themeOrange " />
+            <img src={logo} alt="logo" className="w-8 h-8 p-1 m-2 md:w-12 md:h-12 lg:w-20 lg:h-20 lg-p-2 rounded-full bg-themeOrange " />
         </div>
         <div className="titulo font-dynapuff text-center text-2xl md:text-4xl" >
             <h2 className=''> WE DELIVER - YOU REST </h2>

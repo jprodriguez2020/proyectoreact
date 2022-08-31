@@ -14,11 +14,11 @@ const Main = () => {
 
       <Home />
 
-      <Profitable />
-
       <WeDeliver />
-    
+
       <Brands />
+    
+      <Profitable />
     
       <Footer />
     </div>

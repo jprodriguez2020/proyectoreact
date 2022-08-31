@@ -55,10 +55,10 @@ const brands = [
 
 function Brands() {
   return (
-    <div className= "bg-themeYellow">
-        <h2 className ='mt-10 mb-2 text-3xl text-center capitalize font-dynapuff'>BRANDS WE CARRY</h2>
+    <div className= "bg-themeYellow p-4">
+        <h2 className =' mb-2 font-dynapuff text-center text-2xl md:text-4xl'>BRANDS WE CARRY</h2>
         <hr className="w-1/5 mx-auto"/>
-        <div className= "grid grid-cols-1 p-1 lg:grid-cols-4 justify-items-center sm:grid-cols-4 md:grid-cols-4 lg:gap-2 ">
+        <div className= "grid grid-cols-1 p-8 lg:grid-cols-4 justify-items-center sm:grid-cols-4 md:grid-cols-4 lg:gap-2 ">
             {
                 brands.map(({title, image, id}) => (
                     <div className ="hover:isolation-auto md:w-48 lg:w-64 font-dynapuff" key={id}>
