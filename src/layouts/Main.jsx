@@ -1,17 +1,25 @@
-import React from 'react';
-import bg_dog from '../assets/img/bg-dog.png';
-import Profitable from '../components/Profitable';
+import React from "react";
 import Brands from '../components/Brands/Brands';
+import WeDeliver from "../components/Deliver/WeDeliver";
 import Footer from '../components/Footer/Footer';
+import Home from "../components/Home/Home";
+import Profitable from "../components/Profitable";
+
+
 
 const Main = () => {
+
   return (
     <div className="container-fluid">
-      <div className="flex justify-end w-screen bg-themeYellow h-50">
-        <img src={bg_dog} alt="background dog" className="max-w-lg mt-20" />
-      </div>
+
+      <Home />
+
       <Profitable />
+
+      <WeDeliver />
+    
       <Brands />
+    
       <Footer />
     </div>
   );
