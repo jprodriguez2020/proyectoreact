@@ -24,7 +24,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-themeOrange h-screen ">
+    <div className="bg-themeOrange md:h-screen">
       <div className="flex flex-col justify-center items-center md:flex-row h-full ">
         <div className="mt-80 md:mt-0">
           <div className=" w-80 md:w-full md:space-y-10">
