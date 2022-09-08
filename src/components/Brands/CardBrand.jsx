@@ -7,7 +7,7 @@ function cardbrand({imageLogo, title}) {
     /*    <div className="container flex flex-col p-1 text-center card">*/
     <div className="container flex flex-col p-3 text-sm text-center">
       <div>
-        <img src={imageLogo} alt="" className="container flex flex-col border-solid rounded-xl font-dynapuff text-themeMainBrown sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-8"/> 
+        <img src={imageLogo} alt="" className="container flex flex-col border-solid rounded-xl font-dynapuff text-themeMainBrown sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8"/> 
       </div>
       <div>
         <h4>{title}</h4>
