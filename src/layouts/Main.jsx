@@ -1,16 +1,22 @@
 import React from "react";
-import bg_dog from "../assets/img/bg-dog.png";
+import Brands from '../components/Brands/Brands';
+import WeDeliver from "../components/Deliver/WeDeliver";
+import Footer from '../components/Footer/Footer';
+import Home from "../components/Home/Home";
+import Profitable from "../components/Profitable";
 import { useDispatchCart } from "../components/Cart/Cart";
 import axios from 'axios';
 import { useState } from "react";
 import { useEffect } from "react";
 
 
+
+
 const Main = () => {
+>>>>>>> 03e1a8f7cf62e1733ba4ff875412d800e5bf209f
 
   const [products, setProducts] = useState([])
-  
-  useEffect(  () => { 
+    useEffect(  () => { 
   
     async function fetchProducts(){
 
@@ -37,33 +43,16 @@ const Main = () => {
   }
   return (
     <div className="container-fluid">
-      <div className="flex justify-end w-screen bg-themeYellow h-50">
-        <div className="mt-20">
-          {products.map((product) => (
-            	
-            <div className="flex items-center justify-between p-3" key={product.id}>
-              <div className="flex items-center">
-                <button 
-                  className="px-4 py-2 font-bold rounded-lg bg-themeYellow text-themeMainBrown text-md"
-                  onClick={() => handleAddToCart(product)}
-                >
-                  Add to cart
-                </button>
-                {/* <img src={`http://localhost:1337${product.attributes.image.data[0].attributes.formats.large.url}`} alt={product.attributes.name} className="w-8 h-8 mr-2" />
- */}                <div className="text-sm">{product.attributes.name}</div>
-                <div className="text-sm">{product.attributes.price}</div>
-                <button 
-                  className="px-4 py-2 font-bold rounded-lg bg-themeYellow text-themeMainBrown text-md"
-                  onClick={() => handleRemoveToCart(product)}
-                >
-                  Remove from cart
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-        <img src={bg_dog} alt="background dog" className="max-w-lg mt-20" />
-      </div>
+
+      <Home />
+
+      <WeDeliver />
+
+      <Brands />
+    
+      <Profitable />
+    
+      <Footer />
     </div>
   );
 };

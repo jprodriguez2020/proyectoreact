@@ -4,12 +4,12 @@ import { Menu, Transition } from "@headlessui/react";
 import "./Navbar.css";
 import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/img/logo.svg";
-import { useCart } from "../Cart/Cart";
+
 
 const Navbar = () => {
   const navigation = [
     {
-      src: "/",
+      href: "/",
       text: "Home",
     },
     {
@@ -17,14 +17,14 @@ const Navbar = () => {
       text: "Products",
     },
     {
-      src: "/contact",
+      href: "/contact",
       text: "Contact",
     },
   ];
 
   const navigationMenu = [
     {
-      src: "/shopping-cart",
+      href: "/shopping-cart",
       text: "Shopping Cart",
     },
     {
@@ -32,25 +32,23 @@ const Navbar = () => {
       text: "Contact",
     },
 
-  ];
-  const items = useCart();
-  console.log(items);
+  ]
 
   return (
-    <Fragment>
-      <div className="container-fluid bg-transparent flex justify-center">
-        <div className="container mx-auto flex justify-between  p-3 font-dynapuff text-themeMainBrown fixed">
+    <>
+      <div className="flex justify-center bg-transparent container-fluid ">
+        <div className="container fixed flex justify-between p-3 mx-auto font-dynapuff text-themeMainBrown">
           {/* BRAND */}
-          <Link to="/" className="navbar__brand flex text-2xl">
+          <Link to="/" className="flex text-2xl navbar__brand">
             <img src={logo} alt="logo" className="w-8 h-8 mr-2" />
             Pet Store
           </Link>
 
           {/* NAVIGATION */}
-          <div className="flex items-end lowercase items-center">
-            {navigation.map(({ src, text }) => (
+          <div className="flex items-end lowercase">
+            {navigation.map(({ href, text }) => (
               <NavLink
-                className="flex justify-center navbar__link mr-4 text-md text-center"
+                className="flex justify-center mr-4 text-center navbar__link text-md"
                 key={text}
                 to={src}
               >
@@ -60,12 +58,11 @@ const Navbar = () => {
           </div>
           {/* ICONS */}
           <div className="flex">
-              {/* MENU */}
+            {/* MENU */}
             <Menu as="div" className="relative inline-block text-left">
               <div>
-                <Menu.Button className="inline-flex justify-center w-full rounded-md border border-themeMainBrown shadow-sm px-4 py-2 hover:bg-themeMainBrown hover:text-themeYellow">
-                  <ShoppingCartIcon className="h-6 w-6" aria-hidden='true' />
-
+                <Menu.Button className="inline-flex justify-center w-full px-4 py-2 border rounded-md shadow-sm border-themeMainBrown hover:bg-themeMainBrown hover:text-themeYellow">
+                  <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
                 </Menu.Button>
               </div>
 
@@ -78,15 +75,15 @@ const Navbar = () => {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-themeYellow ring-opacity-5 focus:outline-none">
-                  <div className="navbar__cart bg-themeYellow text-themeMainBrown block px-4 py-2 text-md">
+                <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-themeYellow ring-opacity-5 focus:outline-none">
+                  <div className="block px-4 py-2 navbar__cart bg-themeYellow text-themeMainBrown text-md">
                     {items.length}
                   </div>
                   <div>
-                    {navigationMenu.map(({ src, text }) => (
-                      <Menu.Item key={text} >
-                        <NavLink to={src} className="bg-themeYellow text-themeMainBrown block px-4 py-2 text-md navbar__menuItem">
-                        {text === "Shopping Cart" ? `Shopping Cart ${items.cartItems.length}` : text}
+                    {navigationMenu.map(({ href, text }) => (
+                      <Menu.Item>
+                        <NavLink to={href} key={text} className="block px-4 py-2 bg-themeYellow text-themeMainBrown text-md navbar__menuItem">
+                        {text}
                         </NavLink>
                       </Menu.Item>
                     ))}
@@ -97,7 +94,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 
