@@ -13,15 +13,14 @@ import { useEffect } from "react";
 
 
 const Main = () => {
->>>>>>> 03e1a8f7cf62e1733ba4ff875412d800e5bf209f
 
   const [products, setProducts] = useState([])
     useEffect(  () => { 
   
     async function fetchProducts(){
 
-      const response = await axios.get('http://localhost:1337/api/products?populate=image')
-      const data = response.data.data
+      const response = await axios.get('localhost:5000/products')
+      const data = await response.data
       setProducts(data)
       console.log(data)
     }

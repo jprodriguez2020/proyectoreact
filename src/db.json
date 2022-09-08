@@ -1,0 +1,81 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Product 1",
+            "price": 100,
+            "quantity": 10,
+            "imageSrc": "http://example.com/image1.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Product 2",
+            "price": 200,
+            "quantity": 15,
+            "imageSrc": "http://example.com/image2.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Product 3",
+            "price": 300,
+            "quantity": 20,
+            "imageSrc": "http://example.com/image3.jpg"
+        },
+        {
+            "id": 4,
+            "name": "Product 4",
+            "price": 400,
+            "quantity": 25,
+            "imageSrc": "http://example.com/image4.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Product 5",
+            "price": 500,
+            "quantity": 30,
+            "imageSrc": "http://example.com/image5.jpg"
+        },
+        {
+            "id": 6,
+            "name": "Product 6",
+            "price": 600,
+            "quantity": 35,
+            "imageSrc": "http://example.com/image6.jpg"
+        },
+        {
+            "id": 7,
+            "name": "Product 7",
+            "price": 700,
+            "quantity": 40,
+            "imageSrc": "http://example.com/image7.jpg"    
+        },
+        {
+            "id": 8,
+            "name": "Product 8",
+            "price": 800,
+            "quantity": 45,
+            "imageSrc": "http://example.com/image8.jpg"
+        },
+        {
+            "id": 9,
+            "name": "Product 9",
+            "price": 900,
+            "quantity": 50,
+            "imageSrc": "http://example.com/image9.jpg"
+        },
+        {
+            "id": 10,
+            "name": "Product 10",
+            "price": 1000,
+            "quantity": 55,
+            "imageSrc": "http://example.com/image10.jpg"
+        }
+    ],
+    "cart": {
+        "items": [
+        ],
+        "total": 0,
+        "totalQuantity": 0,
+        "totalPrice": 0
+    }
+}

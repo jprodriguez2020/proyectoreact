@@ -13,7 +13,7 @@ const Navbar = () => {
       text: "Home",
     },
     {
-      src: "/products",
+      href: "/products",
       text: "Products",
     },
     {
@@ -28,7 +28,7 @@ const Navbar = () => {
       text: "Shopping Cart",
     },
     {
-      src: "/contact",
+      href: "/contact",
       text: "Contact",
     },
 
@@ -48,9 +48,9 @@ const Navbar = () => {
           <div className="flex items-end lowercase">
             {navigation.map(({ href, text }) => (
               <NavLink
+              to={href}
                 className="flex justify-center mr-4 text-center navbar__link text-md"
                 key={text}
-                to={src}
               >
                 {text}
               </NavLink>
@@ -77,12 +77,12 @@ const Navbar = () => {
               >
                 <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-themeYellow ring-opacity-5 focus:outline-none">
                   <div className="block px-4 py-2 navbar__cart bg-themeYellow text-themeMainBrown text-md">
-                    {items.length}
+                    
                   </div>
                   <div>
                     {navigationMenu.map(({ href, text }) => (
-                      <Menu.Item>
-                        <NavLink to={href} key={text} className="block px-4 py-2 bg-themeYellow text-themeMainBrown text-md navbar__menuItem">
+                      <Menu.Item key={text}>
+                        <NavLink to={href} className="block px-4 py-2 bg-themeYellow text-themeMainBrown text-md navbar__menuItem">
                         {text}
                         </NavLink>
                       </Menu.Item>
