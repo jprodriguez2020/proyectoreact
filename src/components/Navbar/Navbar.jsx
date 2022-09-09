@@ -1,54 +1,56 @@
-import { Fragment } from 'react';
-import { ShoppingCartIcon } from '@heroicons/react/outline';
-import { Menu, Transition } from '@headlessui/react';
-import './Navbar.css';
-import { NavLink, Link } from 'react-router-dom';
-import logo from '../../assets/img/logo.svg';
+import { Fragment} from "react";
+import { ShoppingCartIcon } from "@heroicons/react/outline";
+import { Menu, Transition } from "@headlessui/react";
+import "./Navbar.css";
+import { NavLink, Link } from "react-router-dom";
+import logo from "../../assets/img/logo.svg";
+
 
 const Navbar = () => {
   const navigation = [
     {
-      href: '/',
-      text: 'Home',
+      href: "/",
+      text: "Home",
     },
     {
-      href: '/products',
-      text: 'Products',
+      href: "/products",
+      text: "Products",
     },
     {
-      href: '/contact',
-      text: 'Contact',
+      href: "/contact",
+      text: "Contact",
     },
   ];
 
   const navigationMenu = [
     {
-      href: '/shopping-cart',
-      text: 'Shopping Cart',
+      href: "/shopping-cart",
+      text: "Shopping Cart",
     },
     {
-      href: '/contact',
-      text: 'Contact',
+      href: "/contact",
+      text: "Contact",
     },
-  ];
+
+  ]
 
   return (
     <>
-      <div className="container-fluid bg-transparent flex justify-center ">
-        <div className="container mx-auto flex justify-between  p-3 font-dynapuff fixed text-themeMainBrown">
+      <div className="flex justify-center bg-transparent container-fluid ">
+        <div className="container fixed flex justify-between p-3 mx-auto font-dynapuff text-themeMainBrown">
           {/* BRAND */}
-          <Link to="/" className="navbar__brand flex text-2xl">
+          <Link to="/" className="flex text-2xl navbar__brand">
             <img src={logo} alt="logo" className="w-8 h-8 mr-2" />
             Pet Store
           </Link>
 
           {/* NAVIGATION */}
-          <div className="flex items-end lowercase ">
+          <div className="flex items-end lowercase">
             {navigation.map(({ href, text }) => (
               <NavLink
-                className="flex justify-center navbar__link mr-4 text-md text-center"
+              to={href}
+                className="flex justify-center mr-4 text-center navbar__link text-md"
                 key={text}
-                to={href}
               >
                 {text}
               </NavLink>
@@ -59,8 +61,8 @@ const Navbar = () => {
             {/* MENU */}
             <Menu as="div" className="relative inline-block text-left">
               <div>
-                <Menu.Button className="inline-flex justify-center w-full rounded-md border border-themeMainBrown shadow-sm px-4 py-2 hover:bg-themeMainBrown hover:text-themeYellow">
-                  <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                <Menu.Button className="inline-flex justify-center w-full px-4 py-2 border rounded-md shadow-sm border-themeMainBrown hover:bg-themeMainBrown hover:text-themeYellow">
+                  <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
                 </Menu.Button>
               </div>
 
@@ -73,16 +75,15 @@ const Navbar = () => {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-themeYellow ring-opacity-5 focus:outline-none">
+                <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-themeYellow ring-opacity-5 focus:outline-none">
+                  <div className="block px-4 py-2 navbar__cart bg-themeYellow text-themeMainBrown text-md">
+                    
+                  </div>
                   <div>
                     {navigationMenu.map(({ href, text }) => (
-                      <Menu.Item>
-                        <NavLink
-                          to={href}
-                          key={text}
-                          className="bg-themeYellow text-themeMainBrown block px-4 py-2 text-md navbar__menuItem"
-                        >
-                          {text}
+                      <Menu.Item key={text}>
+                        <NavLink to={href} className="block px-4 py-2 bg-themeYellow text-themeMainBrown text-md navbar__menuItem">
+                        {text}
                         </NavLink>
                       </Menu.Item>
                     ))}
