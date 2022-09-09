@@ -7,6 +7,9 @@ import { useDispatchCart } from "../components/Cart/Cart";
 import axios from 'axios';
 import { useState } from "react";
 import { useEffect } from "react";
+import ImageSlider from "../components/ImageSlider";
+import Cards from "../components/Cards";
+
 
 
 
@@ -40,17 +43,13 @@ const Main = () => {
     dispatch({type: 'REMOVE_ITEM_FROM_CART', payload: product})
   }
   return (
-    <div className="container-fluid">
+    <><div className="container-fluid">
 
-      <Home />
-
-      <WeDeliver />
-
-      <Brands />
-    
-      <Profitable />
+     <Home />              
+    <ImageSlider /><Cards /><WeDeliver /><Brands /><Profitable />  
     
     </div>
+    </>
   );
 };
 

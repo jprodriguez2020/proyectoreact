@@ -3,9 +3,6 @@ import images from '../assets/images';
 import './Estilos.css'; 
 
 
-
-
-
 function Cards() {
     return (
        <><div >

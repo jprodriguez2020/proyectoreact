@@ -5,8 +5,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 
+
 function ImageSlider() {
-    
+    <><div className="container mt-5 carousel"></div><h1 className="slider_title">Our Services</h1></>  
     let settings = {
         dots: true,
         infinite: true,
@@ -44,8 +45,8 @@ function ImageSlider() {
     };
     
     return (        
-        <Slider {...settings}>
-                <div className="card-wrapper">
+        <Slider {...settings}>           
+               <div className="card-wrapper">
                     <div className="card">
                         <div className="card-image">
                             <img src="https://t3.ftcdn.net/jpg/03/17/25/52/240_F_317255269_g3wQcTo7oeE22RcsdzLLNRq2rKEdlr3H.jpg" alt='t' />
