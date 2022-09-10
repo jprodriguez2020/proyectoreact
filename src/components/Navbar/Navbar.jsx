@@ -4,6 +4,7 @@ import { Menu, Transition } from '@headlessui/react';
 import './Navbar.css';
 import { NavLink, Link } from 'react-router-dom';
 import logo from '../../assets/img/logo.svg';
+import { useState } from 'react';
 
 const Navbar = () => {
   const navigation = [
@@ -32,12 +33,23 @@ const Navbar = () => {
     },
   ];
 
+  const [colorBg, setcolorBg] = useState(false);
+
+  const changeColorBg = () => {
+    if (window.scrollY >= 85){
+    setcolorBg (true)
+  } else {
+    setcolorBg (false)
+  }}
+
+  window.addEventListener('scroll', changeColorBg);
+
   return (
     <>
-      <div className="container-fluid bg-transparent flex justify-center ">
-        <div className="container mx-auto flex justify-between  p-3 font-dynapuff fixed text-themeMainBrown">
+      <div className="container-fluid  flex justify-center">
+        <div className={colorBg ?"bg-themeYellow delay-75 rounded-lg container mx-auto flex justify-between p-3 font-dynapuff fixed top-0 text-themeMainBrown": "container mx-auto flex justify-between p-3 font-dynapuff fixed top-0 text-themeMainBrown "}>
           {/* BRAND */}
-          <Link to="/" className="navbar__brand flex text-2xl">
+          <Link to="/" className="navbar__brand flex w-12 sm:w-40 sm:text-2xl">
             <img src={logo} alt="logo" className="w-8 h-8 mr-2" />
             Pet Store
           </Link>
@@ -46,7 +58,7 @@ const Navbar = () => {
           <div className="flex items-end lowercase ">
             {navigation.map(({ href, text }) => (
               <NavLink
-                className="flex justify-center navbar__link mr-4 text-md text-center"
+                className="flex justify-center navbar__link text-xs sm:mr-4 sm:text-base text-center"
                 key={text}
                 to={href}
               >
