@@ -1,9 +1,12 @@
-import { Fragment} from "react";
+import { Fragment, useEffect,useState} from "react";
 import { ShoppingCartIcon } from "@heroicons/react/outline";
 import { Menu, Transition } from "@headlessui/react";
 import "./Navbar.css";
 import { NavLink, Link } from "react-router-dom";
+import { useCart } from "../Cart/Cart";
+
 import logo from "../../assets/img/logo.svg";
+import CartModal from "../Cart/CartModal";
 
 
 const Navbar = () => {
@@ -22,22 +25,35 @@ const Navbar = () => {
     },
   ];
 
-  const navigationMenu = [
-    {
-      href: "/shopping-cart",
-      text: "Shopping Cart",
-    },
-    {
-      href: "/contact",
-      text: "Contact",
-    },
+  const cart = useCart();
+  console.log(cart);
+  const [scrolling, setScrolling] = useState(false);
+  const [scrollTop, setScrollTop] = useState(0);
 
-  ]
+
+  useEffect(() => {
+    function onScroll() {
+      let currentPosition = window.pageYOffset; // or use document.documentElement.scrollTop;
+      if (currentPosition > scrollTop) {
+        // downscroll code
+        setScrolling(false);
+      } else {
+        // upscroll code
+
+        setScrolling(true);
+      }
+      setScrollTop(currentPosition <= 0 ? 0 : currentPosition);
+    }
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollTop]);
+  
 
   return (
     <>
-      <div className="flex justify-center bg-transparent container-fluid ">
-        <div className="container fixed flex justify-between p-3 mx-auto font-dynapuff text-themeMainBrown">
+      <div className={`flex justify-center ${scrolling ? "bg-transparent" : "bg-white"} container-fluid`} id="navbar">
+        <div className="container flex justify-between p-3 mx-auto font-dynapuff text-themeMainBrown">
           {/* BRAND */}
           <Link to="/" className="flex text-2xl navbar__brand">
             <img src={logo} alt="logo" className="w-8 h-8 mr-2" />
@@ -77,16 +93,7 @@ const Navbar = () => {
               >
                 <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-themeYellow ring-opacity-5 focus:outline-none">
                   <div className="block px-4 py-2 navbar__cart bg-themeYellow text-themeMainBrown text-md">
-                    
-                  </div>
-                  <div>
-                    {navigationMenu.map(({ href, text }) => (
-                      <Menu.Item key={text}>
-                        <NavLink to={href} className="block px-4 py-2 bg-themeYellow text-themeMainBrown text-md navbar__menuItem">
-                        {text}
-                        </NavLink>
-                      </Menu.Item>
-                    ))}
+                    <CartModal cart={cart} />
                   </div>
                 </Menu.Items>
               </Transition>

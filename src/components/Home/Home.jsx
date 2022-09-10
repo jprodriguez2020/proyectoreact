@@ -5,20 +5,20 @@ import './Home.css';
 const Home = () => {
   return (
     <div className="home">
-      <div className=" container fluid flex-col">
-        <div className="h-full flex justify-center ">
-          <div className=" w-5/6 h-full grid grid-cols-2 items-center bg-themeYellow border-solid rounded-b-full">
+      <div className="flex-col container-fluid ">
+        <div className="flex justify-center w-full h-full ">
+          <div className="grid items-center w-5/6 h-full grid-cols-2 border-solid rounded-b-full bg-themeYellow">
             <div className="flex-col mt-20 md:ml-20 ">
-              <h3 className=" md:text-xl max-w-sm ">
+              <h3 className="max-w-sm md:text-xl">
                 <span className="text-themeMainBrown">Good food </span>
                 for a <span className="text-themeMainBrown">Good Animal</span>
               </h3>
 
-              <h1 className=" font-krona text-4xl md:text-6xl m-2">
+              <h1 className="m-2 text-4xl font-krona md:text-6xl">
                 PET SHOP
               </h1>
 
-              <p className=" max-w-md font-poppins">
+              <p className="max-w-md font-poppins">
                 It is more important for us that you spend more time with your
                 pets, and we will select the best diet and bring it to you.
               </p>
@@ -31,12 +31,12 @@ const Home = () => {
               <img
                 src={bg_dog}
                 alt="background dog"
-                className=" mt-20 h-98 sm:-mb-4 md:-mb-8 lg:-mb-16"
+                className="mt-20 h-98 sm:-mb-4 md:-mb-8 lg:-mb-16"
               />
             </div>
           </div>
         </div>
-        <div className="">
+        <div className="w-full">
           <img
             src={wave}
             alt="wave"
