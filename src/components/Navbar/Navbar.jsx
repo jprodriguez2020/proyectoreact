@@ -1,9 +1,13 @@
-import { Fragment } from 'react';
-import { ShoppingCartIcon } from '@heroicons/react/outline';
-import { Menu, Transition } from '@headlessui/react';
-import './Navbar.css';
-import { NavLink, Link } from 'react-router-dom';
-import logo from '../../assets/img/logo.svg';
+import { Fragment, useEffect,useState} from "react";
+import { ShoppingCartIcon } from "@heroicons/react/outline";
+import { Menu, Transition } from "@headlessui/react";
+import "./Navbar.css";
+import { NavLink, Link } from "react-router-dom";
+import { useCart } from "../Cart/Cart";
+
+import logo from "../../assets/img/logo.svg";
+import CartModal from "../Cart/CartModal";
+
 
 const Navbar = () => {
   const navigation = [
@@ -35,7 +39,7 @@ const Navbar = () => {
   return (
     <>
       <div className="flex justify-center bg-transparent container-fluid ">
-        <div className="container fixed flex justify-between items-center p-2 mx-auto font-dynapuff text-themeMainBrown">
+        <div className="container fixed flex items-center justify-between p-2 mx-auto font-dynapuff text-themeMainBrown">
           {/* BRAND */}
           <Link to="/" className="flex text-xs md:text-2xl navbar__brand">
             <img src={logo} alt="logo" className="w-8 h-8 mr-2" />
@@ -47,7 +51,7 @@ const Navbar = () => {
             {navigation.map(({ href, text }) => (
               <NavLink
                 to={href}
-                className="flex justify-center md:mr-4 text-center navbar__link text-sm md:text-base"
+                className="flex justify-center text-sm text-center md:mr-4 navbar__link md:text-base"
                 key={text}
               >
                 {text}
@@ -74,18 +78,8 @@ const Navbar = () => {
                 leaveTo="transform opacity-0 scale-95"
               >
                 <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-themeYellow ring-opacity-5 focus:outline-none">
-                  <div className="block px-4 py-2 navbar__cart bg-themeYellow text-themeMainBrown text-md"></div>
-                  <div>
-                    {navigationMenu.map(({ href, text }) => (
-                      <Menu.Item key={text}>
-                        <NavLink
-                          to={href}
-                          className="block px-4 py-2 bg-themeYellow text-themeMainBrown text-md navbar__menuItem"
-                        >
-                          {text}
-                        </NavLink>
-                      </Menu.Item>
-                    ))}
+                  <div className="block px-4 py-2 navbar__cart bg-themeYellow text-themeMainBrown text-md">
+                    <CartModal cart={cart} />
                   </div>
                 </Menu.Items>
               </Transition>

@@ -1,12 +1,14 @@
-import React, { useReducer, useContext, createContext } from "react";
+import React, { useEffect, useReducer, useContext, createContext } from "react";
+import axios from "axios";
 
 const CartStateContext = createContext();
 const CartDispatchContext = createContext();
 
 const cartReducer = (state, action) => {
+
   switch (action.type) {
     case "ADD_ITEM_TO_CART":
-    console.log(action.payload)
+
       let itemInCart = state.cartItems.find((item) => item.id === action.payload.id);
       return itemInCart
         ? {
@@ -16,41 +18,41 @@ const cartReducer = (state, action) => {
                 ? { ...item, quantity: item.quantity + 1 }
                 : item
             ),
-            cartTotal: state.cartTotal + action.payload.attributes.price,
+            cartTotal: state.cartTotal + action.payload.price,
             totalItems: state.totalItems + 1,
           }
         : {
             ...state,
             cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
-            cartTotal: state.cartTotal + action.payload.attributes.price,
+            cartTotal: state.cartTotal + action.payload.price,
             totalItems: state.totalItems + 1,
           };
-    case "REMOVE_ITEM_FROM_CART":
+    case "REMOVE_SINGLE_ITEM_FROM_CART":
       let itemToDeleteInCart = state.cartItems.find(
         (item) => item.id === action.payload.id
       );
-      console.log(itemToDeleteInCart);
-      if(itemToDeleteInCart.quantity !== undefined){
+      if (itemToDeleteInCart.quantity !== undefined) {
         return itemToDeleteInCart && itemToDeleteInCart.quantity > 1
-        ? {
-            ...state,
-            cartItems: state.cartItems.map((item) =>
-              item.id === action.payload.id
-                ? { ...item, quantity: item.quantity - 1 }
-                : item
-            ),
-            cartTotal: state.cartTotal - action.payload.attributes.price,
-            totalItems: state.totalItems - 1,
-          }
-        : {
-            ...state,
-            cartItems: state.cartItems.filter(
-              (item) => item.id !== action.payload.id
-            ),
-            cartTotal: state.cartTotal - action.payload.attributes.price,
-            totalItems: state.totalItems - 1,
-          };}
-          return {...state}
+          ? {
+              ...state,
+              cartItems: state.cartItems.map((item) =>
+                item.id === action.payload.id
+                  ? { ...item, quantity: item.quantity - 1 }
+                  : item
+              ),
+              cartTotal: state.cartTotal - action.payload.price,
+              totalItems: state.totalItems - 1,
+            }
+          : {
+              ...state,
+              cartItems: state.cartItems.filter(
+                (item) => item.id !== action.payload.id
+              ),
+              cartTotal: state.cartTotal - action.payload.price,
+              totalItems: state.totalItems - 1,
+            };
+      }
+      break;
     case "REMOVE_FROM_CART":
       let itemToRemoveInCart = state.cartItems.find(
         (item) => item.id === action.payload.id
@@ -62,7 +64,8 @@ const cartReducer = (state, action) => {
           (item) => item.id !== action.payload.id
         ),
         cartTotal:
-          state.cartTotal - action.payload.attributes.price * quantityItemToRemove,
+          state.cartTotal -
+          action.payload.price * quantityItemToRemove,
         totalItems: state.totalItems - quantityItemToRemove,
       };
     case "UPDATE_CART_ITEM":
@@ -77,19 +80,28 @@ const cartReducer = (state, action) => {
         }),
       };
     case "CLEAR_CART":
-      return initialState;
+      return [];
     default:
       return state;
   }
 };
 
-const initialState = {
-  cartItems: [],
-  totalItems: 0,
-  cartTotal: 0,
-};
-
 export const CartProvider = ({ children }) => {
+  const [initialState, setInitialState] = React.useState([]);
+  useEffect(() => {
+    async function fetchCart(){
+
+      const response = await axios.get('http://localhost:5000/cart')
+      const data = await response.data
+      setInitialState(data)
+    }
+    fetchCart()
+
+    
+  }, [])
+  
+  console.log(initialState);
+  
   const [cart, dispatch] = useReducer(cartReducer, initialState);
   return (
     <CartStateContext.Provider value={cart}>

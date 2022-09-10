@@ -19,7 +19,10 @@ module.exports = {
       themeDarkBrown: '#21110E',
       themeLight: '#FAFAFA',
       themeRed: '#DC2626',
+      white: '#FFFFFF',
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 };
