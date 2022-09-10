@@ -17,7 +17,7 @@ import { Icons } from "./Menus";
             </div>
             {/* LINKS a Social Redes */}
             <ItemsContainer />
-            <div className="grid grid-cols-1 gap-5 pt-2 pb-8 text-sm text-center text-gray-400 text-themeYellow sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-5 pt-2 pb-8 text-sm text-center text-gray-400 text-themeYellow sm:grid-cols-1 lg:grid-cols-3">
                 <span>© 2022 All rights reserved.</span>
                 <span>Terms · Privacy Policy</span>
                 <SocialIcons Icons={Icons} />
