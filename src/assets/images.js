@@ -20,7 +20,7 @@ export default  [
  {
   'img':hueso,
   'title':'Check out our in-store events!',
-  'description': 'Discover fun events at your local PetSmart including playdates, holidays & more.'
+  'description': 'Discover fun events at your local PetStore including playdates, holidays & more.'
  },
  {
   'img':corazon,
