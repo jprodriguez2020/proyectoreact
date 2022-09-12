@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Profitable = () => {
   return (
     <div className="bg-themeCian w-full">

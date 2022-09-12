@@ -1,8 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import Main from './layouts/Main.jsx';
 import Navbar from './components/Navbar/Navbar';
-import React, { Fragment } from 'react';
+import Products from './pages/Products';
 import Contact from './pages/Contact';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -10,9 +11,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/products" element={<h1>Products</h1>} />
+        <Route path="/products" element={<Products />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </>
   );
 }
