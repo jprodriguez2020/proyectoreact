@@ -7,8 +7,10 @@ import { useDispatchCart } from '../components/Cart/Cart';
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import ImageSlider from '../components/Slider';
+import Cards from '../components/Cards';
 
-const Main = () => {
+function Main() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     async function fetchProducts() {
@@ -32,16 +34,21 @@ const Main = () => {
     dispatch({ type: 'REMOVE_ITEM_FROM_CART', payload: product });
   };
   return (
-    <div className="container-fluid">
-      <Home />
+    <>
+      <div className="container-fluid">
+        <Home />
+        <div className="container mt-5 carousel">
+          <h1 className="slider_title">Our Services</h1>
 
-      <WeDeliver />
-
-      <Brands />
-
-      <Profitable />
-    </div>
+          <ImageSlider />
+        </div>
+        <Cards />
+        <WeDeliver />
+        <Brands />
+        <Profitable />
+      </div>
+    </>
   );
-};
+}
 
 export default Main;
