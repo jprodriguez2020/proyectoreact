@@ -58,7 +58,7 @@ const Navbar = () => {
           <div className="flex items-end lowercase ">
             {navigation.map(({ href, text }) => (
               <NavLink
-                className="flex justify-center navbar__link text-xs sm:mr-4 sm:text-base text-center"
+                className="flex justify-center navbar__link text-xs sm:mx-4 sm:text-base text-center"
                 key={text}
                 to={href}
               >
