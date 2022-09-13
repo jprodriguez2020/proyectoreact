@@ -9,8 +9,8 @@ import { CartProvider } from "./components/Cart/Cart";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <CartProvider>
+   < React.StrictMode>
+    <CartProvider>
         <App />
       </CartProvider>
     </React.StrictMode>
