@@ -49,7 +49,7 @@ const Navbar = () => {
   return (
     <>
       <div className="container-fluid  flex justify-center">
-        <div className={colorBg ?"bg-themeYellow delay-75 rounded-lg container mx-auto flex justify-between p-3 font-dynapuff fixed top-0 text-themeMainBrown": "container mx-auto flex justify-between p-3 font-dynapuff fixed top-0 text-themeMainBrown "}>
+        <div className={colorBg ?"bg-themeYellow delay-75 z-10 rounded-lg container mx-auto flex justify-between p-3 font-dynapuff fixed top-0 text-themeMainBrown": "container mx-auto flex justify-between p-3 font-dynapuff fixed top-0 text-themeMainBrown "}>
           {/* BRAND */}
           <Link to="/" className="navbar__brand flex w-12 sm:w-40 sm:text-2xl">
             <img src={logo} alt="logo" className="w-8 h-8 mr-2" />
