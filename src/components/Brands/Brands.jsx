@@ -54,12 +54,12 @@ const brands = [
 
 function Brands() {
   return (
-    <div className="bg-themeYellow p-12">
+    <div className="p-12 bg-themeYellow">
       <h2 className="pt-10 mb-2 text-3xl text-center capitalize font-dynapuff">
         BRANDS WE CARRY
       </h2>
-      <hr className="w-1/5 mx-auto pb-2" />
-      <div className="grid grid-cols-1 p-1 lg:grid-cols-4 justify-items-center sm:grid-cols-4 md:grid-cols-4 lg:gap-2 ">
+      <hr className="w-1/5 pb-2 mx-auto" />
+      <div className="grid grid-cols-2 p-1 lg:grid-cols-4 justify-items-center sm:grid-cols-2 md:grid-cols-4 lg:gap-2 ">
         {brands.map(({ title, image, id }) => (
           <div
             className="hover:isolation-auto md:w-48 lg:w-64 font-dynapuff"
