@@ -37,11 +37,10 @@ function Main() {
     <>
       <div className="container-fluid">
         <Home />
-        <div className="container mt-5 carousel">
-          <h1 className="slider_title">Our Services</h1>
-
-          <ImageSlider />
+        <div className="mt-5 carousel">
+          <h1 className="slider_title text-center">Our Services</h1>
         </div>
+        <ImageSlider />
         <Cards />
         <WeDeliver />
         <Brands />
