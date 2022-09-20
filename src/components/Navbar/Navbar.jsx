@@ -10,6 +10,7 @@ import CartModal from "../Cart/CartModal";
 
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
   const navigation = [
     {
       href: '/',
@@ -25,21 +26,16 @@ const Navbar = () => {
     },
   ];
 
-  const navigationMenu = [
-    {
-      href: '/shopping-cart',
-      text: 'Shopping Cart',
-    },
-    {
-      href: '/contact',
-      text: 'Contact',
-    },
-  ];
+  const cart = useCart();
+
+  console.log(cart);
+  
+  
 
   return (
     <>
-      <div className="flex justify-center bg-transparent container-fluid ">
-        <div className="container fixed flex items-center justify-between p-2 mx-auto font-dynapuff text-themeMainBrown">
+      <div className={`flex justify-center container-fluid`} id="navbar">
+        <div className="container flex justify-between p-3 mx-auto font-dynapuff text-themeMainBrown">
           {/* BRAND */}
           <Link to="/" className="flex text-xs md:text-2xl navbar__brand">
             <img src={logo} alt="logo" className="w-8 h-8 mr-2" />
@@ -63,26 +59,12 @@ const Navbar = () => {
             {/* MENU */}
             <Menu as="div" className="relative inline-block text-left">
               <div>
-                <Menu.Button className="inline-flex justify-center w-full px-4 py-2 border rounded-md shadow-sm border-themeMainBrown hover:bg-themeMainBrown hover:text-themeYellow">
+                <Menu.Button onClick={()=>setOpen(true)} className="inline-flex justify-center w-full px-4 py-2 border rounded-md shadow-sm border-themeMainBrown hover:bg-themeMainBrown hover:text-themeYellow">
                   <ShoppingCartIcon className="w-6 h-6" aria-hidden="true" />
                 </Menu.Button>
               </div>
+              <CartModal cart={cart} open={open} setOpen={setOpen} />
 
-              <Transition
-                as={Fragment}
-                enter="transition ease-out duration-100"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
-              >
-                <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-themeYellow ring-opacity-5 focus:outline-none">
-                  <div className="block px-4 py-2 navbar__cart bg-themeYellow text-themeMainBrown text-md">
-                    <CartModal cart={cart} />
-                  </div>
-                </Menu.Items>
-              </Transition>
             </Menu>
           </div>
         </div>

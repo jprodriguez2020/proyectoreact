@@ -1,11 +1,9 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon, PlusIcon, MinusIcon } from "@heroicons/react/outline";
 import { useDispatchCart } from "./Cart";
 
-export default function CartModal({ cart }) {
-  console.log(cart);
-  const [open, setOpen] = useState(true);
+export default function CartModal({ cart, open, setOpen }) {
   const dispatch = useDispatchCart();
 
   const handleAddToCart = (product) => {
@@ -20,9 +18,13 @@ export default function CartModal({ cart }) {
     dispatch({ type: "REMOVE_FROM_CART", payload: product });
   };
 
+  const handleBuyNow = () => {
+    dispatch({ type: "CLEAR_CART" });
+    setOpen(false);
+  };
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
+    <Transition.Root  show={open} as={Fragment}>
+      <Dialog  as="div" className="relative z-10" onClose={setOpen}>
         <Transition.Child
           as={Fragment}
           enter="ease-in-out duration-500"
@@ -49,7 +51,7 @@ export default function CartModal({ cart }) {
               >
                 <Dialog.Panel className="w-screen max-w-md pointer-events-auto">
                   <div className="flex flex-col h-full overflow-y-scroll shadow-xl bg-themeLight">
-                    <div className="flex-1 px-4 py-6 overflow-y-auto sm:px-6">
+                    <div className="flex-1 px-2 py-6 overflow-y-auto sm:px-6">
                       <div className="flex items-start justify-between">
                         <Dialog.Title className="text-lg font-medium text-gray-900">
                           Shopping cart
@@ -83,13 +85,13 @@ export default function CartModal({ cart }) {
                                     />
                                   </div>
 
-                                  <div className="flex flex-col flex-1 ml-4">
+                                  <div className="flex flex-col flex-1 ml-2">
                                     <div>
                                       <div className="flex justify-between text-base font-medium text-gray-900">
-                                        <h3>
-                                          <a href={"#"}>{product.name}</a>
-                                        </h3>
-                                        <p className="ml-4">{product.price}</p>
+                                        <h4>
+                                          {product.name}
+                                        </h4>
+                                        <p className="ml-2">${product.price}</p>
                                       </div>
                                     </div>
                                     <div className="flex items-end justify-between flex-1 text-sm">
@@ -141,20 +143,17 @@ export default function CartModal({ cart }) {
                     <div className="px-4 py-6 border-t border-gray-200 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <p>Subtotal</p>
-                        <p>{cart.cartTotal}</p>
+                        <p>$ {cart.cartTotal}</p>
                         <p>Total Items</p>
                         <p>{cart.totalItems}</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">
                         Shipping and taxes calculated at checkout.
                       </p>
-                      <div className="mt-6">
-                        <a
-                          href="#"
-                          className="flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700"
-                        >
-                          Checkout
-                        </a>
+                      <div className="flex justify-center align-middle">
+                      <button className="button font-poppins my-3 py-1.5 px-14 shadow-xl" onClick={handleBuyNow}>
+                        BUY NOW
+                      </button>
                       </div>
                       <div className="flex justify-center mt-6 text-sm text-center text-gray-500">
                         <p>

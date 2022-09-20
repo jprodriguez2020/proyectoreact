@@ -11,15 +11,15 @@ const Home = () => {
         <div className="flex justify-center w-full h-full ">
           <div className="grid items-center w-5/6 h-full grid-cols-2 border-solid rounded-b-full bg-themeYellow">
             <div className="flex-col mt-20 md:ml-20 ">
-              <h3 className="max-w-sm  md:text-xl">
+              <h3 className="max-w-sm md:text-xl">
                 {' '}
                 <span className="text-themeMainBrown">Good food </span>
                 for a <span className="text-themeMainBrown">Good Animal</span>
               </h3>
 
-              <h1 className="m-2 text-4xl  font-krona md:text-6xl">
+              <h1 className="m-2 text-4xl font-krona md:text-6xl">
                 {' '}
-                PET SHOP PET SHOP
+                PET SHOP
               </h1>
 
               <p className="max-w-md font-poppins">
@@ -28,7 +28,7 @@ const Home = () => {
               </p>
 
               <button className="button font-poppins ml-6 mb-16 mt-3 py-1.5 px-14 shadow-xl">
-                <a href="#!"> ORDER </a> <a href="#!"> ORDER </a>
+                <a href="#!"> ORDER </a>
               </button>
             </div>
             <div className="flex justify-end h-full">
