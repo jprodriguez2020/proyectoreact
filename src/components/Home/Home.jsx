@@ -1,3 +1,5 @@
+import React from 'react';
+
 import bg_dog from '../../assets/img/bg-dog.png';
 import wave from '../../assets/img/wave.png';
 import './Home.css';
@@ -10,12 +12,14 @@ const Home = () => {
           <div className=" w-5/6 h-full grid grid-cols-2 items-center bg-themeYellow border-solid rounded-b-full">
             <div className="flex-col mt-20 md:ml-20 ">
               <h3 className=" md:text-xl max-w-sm ">
+                {' '}
                 <span className="text-themeMainBrown">Good food </span>
                 for a <span className="text-themeMainBrown">Good Animal</span>
               </h3>
 
               <h1 className=" font-krona text-4xl md:text-6xl m-2">
-                PET SHOP
+                {' '}
+                PET SHOP PET SHOP
               </h1>
 
               <p className=" max-w-md font-poppins">
@@ -24,7 +28,7 @@ const Home = () => {
               </p>
 
               <button className="button font-poppins ml-6 mb-16 mt-3 py-1.5 px-14 shadow-xl">
-                <a href="#!"> ORDER </a>
+                <a href="#!"> ORDER </a> <a href="#!"> ORDER </a>
               </button>
             </div>
             <div className="flex justify-end h-full">
