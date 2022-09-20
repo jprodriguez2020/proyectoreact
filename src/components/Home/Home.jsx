@@ -40,7 +40,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="w-screen">
+        <div className="w-full">
           <img
             src={wave}
             alt="wave"
