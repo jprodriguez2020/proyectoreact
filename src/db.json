@@ -72,23 +72,8 @@
     }
   ],
   "cart": {
-    "cartItems": [
-      {
-        "id": 2,
-        "name": "Milk-Bone Pup-kin Spice Biscuits Dog Treats - Pumpkin Spice",
-        "price": 200,
-        "quantity": 3,
-        "imageSrc": "https://s7d2.scene7.com/is/image/PetSmart/5332644?$CLEARjpg$"
-      },
-      {
-        "id": 1,
-        "name": "Top Paw® Ivy & Tan Boho Cuddler Dog Bed",
-        "price": 100,
-        "quantity": 2,
-        "imageSrc": "https://s7d2.scene7.com/is/image/PetSmart/5328466?$CLEARjpg$"
-      }
-    ],
-    "cartTotal": 800,
-    "totalItems": 5
+    "cartItems": [],
+    "cartTotal": 0,
+    "totalItems": 0
   }
 }

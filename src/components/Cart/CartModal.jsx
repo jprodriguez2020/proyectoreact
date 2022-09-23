@@ -1,30 +1,30 @@
-import { Fragment, useState, useEffect } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { XIcon, PlusIcon, MinusIcon } from "@heroicons/react/outline";
-import { useDispatchCart } from "./Cart";
+import { Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { XIcon, PlusIcon, MinusIcon } from '@heroicons/react/outline';
+import { useDispatchCart } from './Cart';
 
 export default function CartModal({ cart, open, setOpen }) {
   const dispatch = useDispatchCart();
 
   const handleAddToCart = (product) => {
-    dispatch({ type: "ADD_ITEM_TO_CART", payload: product });
+    dispatch({ type: 'ADD_ITEM_TO_CART', payload: product });
   };
 
   const handleRemoveSingleItem = (product) => {
-    dispatch({ type: "REMOVE_SINGLE_ITEM_FROM_CART", payload: product });
+    dispatch({ type: 'REMOVE_SINGLE_ITEM_FROM_CART', payload: product });
   };
 
   const handleRemoveFromCart = (product) => {
-    dispatch({ type: "REMOVE_FROM_CART", payload: product });
+    dispatch({ type: 'REMOVE_FROM_CART', payload: product });
   };
 
   const handleBuyNow = () => {
-    dispatch({ type: "CLEAR_CART" });
+    dispatch({ type: 'CLEAR_CART' });
     setOpen(false);
   };
   return (
-    <Transition.Root  show={open} as={Fragment}>
-      <Dialog  as="div" className="relative z-10" onClose={setOpen}>
+    <Transition.Root show={open} as={Fragment}>
+      <Dialog as="div" className="relative z-10" onClose={setOpen}>
         <Transition.Child
           as={Fragment}
           enter="ease-in-out duration-500"
@@ -70,10 +70,7 @@ export default function CartModal({ cart, open, setOpen }) {
 
                       <div className="mt-8">
                         <div className="flow-root">
-                          <ul
-                            role="list"
-                            className="-my-6 divide-y divide-gray-200"
-                          >
+                          <ul className="-my-6 divide-y divide-gray-200">
                             {cart.cartItems.length > 0 ? (
                               cart.cartItems.map((product) => (
                                 <li key={product.id} className="flex py-6">
@@ -88,9 +85,7 @@ export default function CartModal({ cart, open, setOpen }) {
                                   <div className="flex flex-col flex-1 ml-2">
                                     <div>
                                       <div className="flex justify-between text-base font-medium text-gray-900">
-                                        <h4>
-                                          {product.name}
-                                        </h4>
+                                        <h4>{product.name}</h4>
                                         <p className="ml-2">${product.price}</p>
                                       </div>
                                     </div>
@@ -151,22 +146,22 @@ export default function CartModal({ cart, open, setOpen }) {
                         Shipping and taxes calculated at checkout.
                       </p>
                       <div className="flex justify-center align-middle">
-                      <button className="button font-poppins my-3 py-1.5 px-14 shadow-xl" onClick={handleBuyNow}>
-                        BUY NOW
-                      </button>
+                        <button
+                          className="button font-poppins my-3 py-1.5 px-14 shadow-xl"
+                          onClick={handleBuyNow}
+                        >
+                          BUY NOW
+                        </button>
                       </div>
                       <div className="flex justify-center mt-6 text-sm text-center text-gray-500">
-                        <p>
-                          or
-                          <button
-                            type="button"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                            onClick={() => setOpen(false)}
-                          >
-                            Continue Shopping
-                            <span aria-hidden="true"> &rarr;</span>
-                          </button>
-                        </p>
+                        <button
+                          type="button"
+                          className="font-medium text-lg hover:text-indigo-500"
+                          onClick={() => setOpen(false)}
+                        >
+                          or Continue Shopping
+                          <span aria-hidden="true"> &rarr;</span>
+                        </button>
                       </div>
                     </div>
                   </div>

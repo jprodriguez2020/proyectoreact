@@ -1,61 +1,66 @@
-import React, { useState, useEffect, useReducer, useContext, createContext } from "react";
-import axios from "axios";
+import React, {
+  useState,
+  useEffect,
+  useReducer,
+  useContext,
+  createContext,
+} from 'react';
+import axios from 'axios';
 
 const CartStateContext = createContext();
 const CartDispatchContext = createContext();
 
 const cartReducer = (state, action) => {
-
   switch (action.type) {
-    case "READ_STATE" : {
+    case 'READ_STATE': {
       return {
         ...state,
-        ...action.payload
-      }
-    };
-    case "ADD_ITEM_TO_CART":
-      
-      let itemInCart = state.cartItems.find((item) => item.id === action.payload.id);
+        ...action.payload,
+      };
+    }
+    case 'ADD_ITEM_TO_CART':
+      let itemInCart = state.cartItems.find(
+        (item) => item.id === action.payload.id
+      );
 
       const newState = itemInCart
-      ?  {
-                
-          ...state,
-          cartItems: state.cartItems.map((item) =>
-            item.id === action.payload.id
-              ? { ...item, quantity: item.quantity + 1 }
-              : item
-          ),
-          cartTotal: state.cartTotal + action.payload.price,
-          totalItems: state.totalItems + 1, 
-          
-        }
-      : {
-          ...state,
-          cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
-          cartTotal: state.cartTotal + action.payload.price,
-          totalItems: state.totalItems + 1,
-        };
-        const options = {
-        method: "POST",
+        ? {
+            ...state,
+            cartItems: state.cartItems.map((item) =>
+              item.id === action.payload.id
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+            ),
+            cartTotal: state.cartTotal + action.payload.price,
+            totalItems: state.totalItems + 1,
+          }
+        : {
+            ...state,
+            cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
+            cartTotal: state.cartTotal + action.payload.price,
+            totalItems: state.totalItems + 1,
+          };
+      const options = {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        data: JSON.stringify(newState)
-      }
+        data: JSON.stringify(newState),
+      };
 
-      const url = "http://localhost:5000/cart";
+      const url = 'http://localhost:5000/cart';
 
-      const res =  axios(url, options);
+      axios(url, options);
       // const data = res.data;
-      // console.log('data', data); 
+      // console.log('data', data);
       return newState;
 
-    case "REMOVE_SINGLE_ITEM_FROM_CART":
+    case 'REMOVE_SINGLE_ITEM_FROM_CART':
       let itemToDeleteInCart = state.cartItems.find(
         (item) => item.id === action.payload.id
       );
-      const newStateRemoveSingle = itemToDeleteInCart.quantity && itemToDeleteInCart.quantity > 1
+      const newStateRemoveSingle =
+        itemToDeleteInCart.quantity && itemToDeleteInCart.quantity > 1
           ? {
               ...state,
               cartItems: state.cartItems.map((item) =>
@@ -76,19 +81,18 @@ const cartReducer = (state, action) => {
             };
 
       const optionsRemoveSingle = {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        data: JSON.stringify(newStateRemoveSingle)
-      }
-      const urlRemoveSingle = "http://localhost:5000/cart";
+        data: JSON.stringify(newStateRemoveSingle),
+      };
+      const urlRemoveSingle = 'http://localhost:5000/cart';
 
-
-        const resRemoveSingle =  axios(urlRemoveSingle, optionsRemoveSingle);
+      axios(urlRemoveSingle, optionsRemoveSingle);
       return newStateRemoveSingle;
 
-    case "REMOVE_FROM_CART":
+    case 'REMOVE_FROM_CART':
       let itemToRemoveInCart = state.cartItems.find(
         (item) => item.id === action.payload.id
       );
@@ -99,44 +103,40 @@ const cartReducer = (state, action) => {
           (item) => item.id !== action.payload.id
         ),
         cartTotal:
-          state.cartTotal -
-          action.payload.price * quantityItemToRemove,
+          state.cartTotal - action.payload.price * quantityItemToRemove,
         totalItems: state.totalItems - quantityItemToRemove,
       };
 
       const optionsRemoveProduct = {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        data: JSON.stringify(newStateRemoveProduct)
-      }
-      const urlRemoveProduct = "http://localhost:5000/cart";
+        data: JSON.stringify(newStateRemoveProduct),
+      };
+      const urlRemoveProduct = 'http://localhost:5000/cart';
 
-
-        const resRemoveProduct =  axios(urlRemoveProduct, optionsRemoveProduct);
+      axios(urlRemoveProduct, optionsRemoveProduct);
 
       return newStateRemoveProduct;
-    case "CLEAR_CART":
+    case 'CLEAR_CART':
       const newStateClearCart = {
-        "cartItems": [
-          
-        ],
-        "cartTotal": 0,
-        "totalItems": 0
-      }
+        cartItems: [],
+        cartTotal: 0,
+        totalItems: 0,
+      };
       const optionsClearCart = {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        data: JSON.stringify(newStateClearCart)
-      }
-      const urlClearCart = "http://localhost:5000/cart";
+        data: JSON.stringify(newStateClearCart),
+      };
+      const urlClearCart = 'http://localhost:5000/cart';
 
-      const resClearCart =  axios(urlClearCart, optionsClearCart);
+      axios(urlClearCart, optionsClearCart);
       return newStateClearCart;
-    
+
     default:
       return state;
   }
@@ -145,23 +145,22 @@ const cartReducer = (state, action) => {
 export const CartProvider = ({ children }) => {
   const [isInitialized, setIsInitialized] = useState(false);
   const [cart, dispatch] = useReducer(cartReducer, []);
-  
+
   const fetchCart = async () => {
     const response = await axios.get('http://localhost:5000/cart');
     const data = await response.data;
-      
-      dispatch({type: 'READ_STATE', payload: data})
-      setIsInitialized(true);
-    }
-    
-    
-    useEffect(() => {
-      fetchCart()
-  }, [])
+
+    dispatch({ type: 'READ_STATE', payload: data });
+    setIsInitialized(true);
+  };
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
   return (
     <CartStateContext.Provider value={cart}>
       <CartDispatchContext.Provider value={dispatch}>
-        { isInitialized ? children : null}
+        {isInitialized ? children : null}
       </CartDispatchContext.Provider>
     </CartStateContext.Provider>
   );

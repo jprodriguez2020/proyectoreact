@@ -55,7 +55,7 @@ const brands = [
 function Brands() {
   return (
     <div className="p-12 bg-themeYellow">
-      <h2 className="pt-10 mb-2 text-3xl text-center capitalize font-dynapuff">
+      <h2 className="pt-10 mb-2 mx-auto text-3xl text-center capitalize font-dynapuff">
         BRANDS WE CARRY
       </h2>
       <hr className="w-1/5 pb-2 mx-auto" />

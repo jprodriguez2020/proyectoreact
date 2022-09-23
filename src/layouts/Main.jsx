@@ -7,7 +7,6 @@ import ImageSlider from '../components/Slider';
 import Cards from '../components/Cards';
 
 function Main() {
-  
   return (
     <>
       <div className="container-fluid">
@@ -16,14 +15,12 @@ function Main() {
           <h1 className="text-center slider_title">Our Services</h1>
         </div>
         <ImageSlider />
-        
         <Cards />
         <WeDeliver />
         <Brands />
         <Profitable />
       </div>
     </>
-  
   );
 }
 
