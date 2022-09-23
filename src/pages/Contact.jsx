@@ -16,6 +16,9 @@ const Contact = () => {
     //Validacion del Formulario
     if ([client, email, phone].includes('')) {
       setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
       return;
     }
     setError(false);
@@ -27,7 +30,7 @@ const Contact = () => {
     <div className="bg-themeOrange md:h-screen">
       <div className="flex flex-col justify-center items-center md:flex-row h-full ">
         <div className="mt-80 md:mt-0">
-          <div className=" w-80 md:w-full md:space-y-10">
+          <div className=" w-72 md:w-full md:space-y-10">
             <h1 className="p-5 text-xl md:text-3xl font-light tracking-widest">
               Need advice on the
             </h1>
@@ -43,7 +46,7 @@ const Contact = () => {
 
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col space-y-4 w-80 p-5"
+            className="flex flex-col space-y-4 w-72 md:w-full mx-auto p-4"
           >
             {error && <Error message="All fields are requiered" />}
             <input

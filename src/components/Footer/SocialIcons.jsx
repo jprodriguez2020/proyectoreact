@@ -1,5 +1,3 @@
-import React from "react";
-
 const SocialIcons = ({ Icons }) => {
   return (
     <div className="text-teal-500">

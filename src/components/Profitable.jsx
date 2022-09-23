@@ -8,7 +8,7 @@ const Profitable = () => {
         <span className="text-xl">to work with us</span>
       </div>
 
-      <div className="grid gap-8 justify-items-center md:grid-cols-3 w-3/5 m-auto pb-10 ">
+      <div className="grid gap-8 justify-items-center md:grid-cols-3 md:w-3/5 mx-auto pb-10 ">
         <div className="w-56 text-center">
           <h3 className="text-themeLight p-3">The lowest prices</h3>
           <p>

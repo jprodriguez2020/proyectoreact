@@ -16,13 +16,13 @@ const WeDeliver = () => {
         <img
           src={logo}
           alt="logo"
-          className="w-8 h-8 p-1 m-2 md:w-12 md:h-12 lg:w-20 lg:h-20 lg-p-2 rounded-full bg-themeOrange "
+          className="w-8 h-8 p-1 m-2 md:w-12 md:h-12 lg:w-20 lg:h-20 lg-p-2 rounded-full bg-themeOrange"
         />
       </div>
       <div className="titulo font-dynapuff text-center text-2xl md:text-4xl">
-        <h2 className=""> WE DELIVER - YOU REST </h2>
+        <h1> WE DELIVER - YOU REST </h1>
       </div>
-      <div className="grid grid-cols-4 mt-8 md:mt20 mx-8 md:mx-20 place-items-center">
+      <div className="grid grid-cols-2 md:grid-cols-4 mt-8 md:mt20 mx-8 md:mx-20 place-items-center">
         {Deliver.map(({ id, title, text }) => (
           <div
             className="cardDelivery font-krona w-24 md:w-28 h-30 md:h-52 text-center p-4 mx-0"
